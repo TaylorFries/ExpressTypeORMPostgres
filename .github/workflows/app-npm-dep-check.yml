@@ -147,6 +147,14 @@ jobs:
           name: outdatedDeps
           path: .
 
+      # create env variable for issue body
+      - name: Create Issue Body
+        shell: bash
+        run: |
+          OUTPUT=$(cat outdatedDeps.json)
+          echo "ISSUE_BODY=${OUTPUT}" >> $GITHUB_ENV
+
+
       # Checkout branch
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -164,6 +172,6 @@ jobs:
           JIRA_SUBTASK: "10003" # each Jira board has a different issue type for subtasks
           JIRA_EPIC: "10014, PIMS-450" # epic links are technically a custom field with this specific id and ticket number (for PIMS)
           JIRA_API_KEY: ${{ secrets.JIRA_API_KEY }} # key used to access JIRA API
-          ISSUE_BODY: outdatedDeps.json # dependency update list
+          ISSUE_BODY: ${{ env.ISSUE_BODY }} # dependency update list
         run: |
           python3 .github/helpers/jira-api/create_tickets.py
