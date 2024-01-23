@@ -6,6 +6,7 @@ Modules used to connect to JIRA API, refining dependency updates and refining ti
 import http.client
 import sys
 import os
+import json
 
 import jira_con
 import refine_dependency
@@ -49,9 +50,7 @@ def get_env_variables():
 
     # decode incoming string
     dep_in = refine_dependency.decode_github_env( dep_in )
-
-    print(type(dep_in))
-    print(dep_in)
+    dep_in = json.loads(dep_in)
 
     # check for jira api key environment variable
     try:
