@@ -152,6 +152,9 @@ jobs:
         shell: bash
         run: |
           OUTPUT=$(cat outdatedDeps.json)
+          OUTPUT="${OUTPUT//'%'/'%25'}"
+          OUTPUT="${OUTPUT//$'\n'/'%0A'}"
+          OUTPUT="${OUTPUT//$'\r'/'%0D'}"
           echo "ISSUE_BODY=${OUTPUT}" >> $GITHUB_ENV
 
 
