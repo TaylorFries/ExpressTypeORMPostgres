@@ -50,6 +50,9 @@ def get_env_variables():
     # decode incoming string
     dep_in = refine_dependency.decode_github_env( dep_in )
 
+    print(type(dep_in))
+    print(dep_in)
+
     # check for jira api key environment variable
     try:
         jira_api_key = os.environ["JIRA_API_KEY"]
