@@ -15,9 +15,9 @@
   // used to determine what updates to post
   LEVEL_FLAGS: "MINOR MAJOR",
   // sets what JIRA board to post and pull from
-  JIRA_BOARD: "PIMS",
+  JIRA_BOARD: "TES",
   // each Jira board has a different issue type for subtasks
-  JIRA_SUBTASK: "10003",
+  JIRA_SUBTASK: "10110",
   // epic links are technically a custom field with this specific id and ticket number (for PIMS)
-  JIRA_EPIC: "10014, PIMS-450"
+  JIRA_EPIC: "10112, TES-917"
 }
